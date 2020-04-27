@@ -1,5 +1,6 @@
 package model;
 
+import interactionException.EmptyMotto;
 
 import java.util.Objects;
 
@@ -13,8 +14,7 @@ public class Motto {
 
     //MODIFIES: this, wiseman
     //EFFECTS: add wiseman to this
-    public void addWiseman(Wiseman wiseman) {
-
+    public void addWiseman(Wiseman wiseman) throws EmptyMotto {
         if (this.wiseman != null && this.wiseman != wiseman) {
             this.wiseman.removeMotto(this);
         }
@@ -26,7 +26,7 @@ public class Motto {
 
     //MODIFIES: this, wiseman
     //EFFECTS: remove wiseman from this
-    public void removeWiseman() {
+    public void removeWiseman() throws EmptyMotto {
         wiseman.removeMotto(this);
         addWiseman(null);
     }

@@ -8,10 +8,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 public class ReadWebPage {
     static BufferedReader br = null;
@@ -33,24 +31,16 @@ public class ReadWebPage {
 
         try {
             //String theURL = "https://edge.edx.org/courses/course-v1:UBC+CPSC210+all/beaf20f69f004eeb986101fd19512729/"; //this can point to any URL
-
             URL url = new URL(theURL);
             br = new BufferedReader(new InputStreamReader(url.openStream()));
-
-
-
             StringBuilder sb = new StringBuilder();
-
             while ((line = br.readLine()) != null) {
-
                 sb.append(line);
                 sb.append(System.lineSeparator());
             }
-
             //System.out.println(sb);
             web = parseJson(sb.toString());
         } finally {
-
             if (br != null) {
                 br.close();
             }
@@ -59,22 +49,20 @@ public class ReadWebPage {
     }
 
     private static String parseJson(String s) {
-        String wired = "";
+        String predict = "";
         try {
-
             JSONObject obj = new JSONObject(s);
             JSONObject coordObj = obj.getJSONObject("coord");
             double lon = coordObj.getDouble("lon");
             double lat = coordObj.getDouble("lat");
             //System.out.println("lon = " + lon + " lat = " + lat);
-            wired = "lon = " + lon + " lat = " + lat;
-
+            predict = "lon = " + lon + " lat = " + lat;
 
             JSONObject obj1 = new JSONObject(s);
             JSONObject mainObj = obj1.getJSONObject("main");
             int temp = mainObj.getInt("temp");
             //System.out.println("The temperature is " + temp);
-            wired = wired + "\n" + "The temperature is " + temp;
+            predict = predict + "\n" + "The temperature is " + temp;
 //            String weather = mainObj.getString("main");
 //            String description = mainObj.getString("description");
 //            System.out.println("weather = " + weather + " description = " + description);
@@ -83,7 +71,7 @@ public class ReadWebPage {
             System.out.println("Exception been caught");
         }
 
-        return wired;
+        return predict;
     }
 }
 

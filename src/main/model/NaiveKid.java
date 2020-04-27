@@ -10,11 +10,10 @@ public class NaiveKid implements Observer {
         this.name = name;
     }
 
-
-//    public void update(String dream) {
-//        update();
-//        System.out.println(getName() + "I achieved the dream " + dream + " ! Yay me!");
-//    }
+    public void update(String dream) {
+        update();
+        System.out.println(getName() + "I achieved the dream " + dream + " ! Yay me!");
+    }
 
     //EFFECTS: print string
     @Override

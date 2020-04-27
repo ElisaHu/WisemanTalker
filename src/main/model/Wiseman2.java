@@ -1,8 +1,8 @@
 package model;
 
-import interactionexception.EmptyDream;
-
+import interactionException.EmptyDream;
 import java.io.IOException;
+import java.lang.annotation.Native;
 import java.util.ArrayList;
 
 public class Wiseman2 extends WisemanModel {
@@ -10,31 +10,27 @@ public class Wiseman2 extends WisemanModel {
     private DreamDealer dreamDealer;
 
     public Wiseman2(int age, String status, ArrayList<String> dream) {
-
         dreamDealer = new DreamDealer(this);
         this.age = age;
         this.status = status;
-        //this.dream = dream;
         dreamDealer.setDream(dream);
     }
 
     // EFFECT: return personal wiseman info
     @Override
     public String wisemanInfo() {
-//        print("This is dreamWiseman");
-//        super.wisemanInfo();
-//        System.out.println("If you tell me a dream, it is more likely to come true!");
-//        printDashLine();
         return "This is dreamWiseman" + "\n" + super.wisemanInfo() + "\n"
-                + "If you tell me a dream, it is more likely to come true!";
+                + "If you tell me a dream, I will make it come true!";
     }
-
-
 
     //MODIFIES: this
     //EFFECTS: add dream to dream list, throw exception if it is an empty string
-    public void addDream(String s) {
+    public void addDream(String s) throws EmptyDream {
+        if (s == null) throw new EmptyDream();
         dreamDealer.addDream(s);
+    }
+
+    public void addObserver(NaiveKid c) {
     }
 
     //EFFECTS: print dream
@@ -46,7 +42,6 @@ public class Wiseman2 extends WisemanModel {
         return dreamDealer.getDream();
     }
 
-
     //EFFECTS: call save in dreamDealer
     public void save() throws IOException {
         dreamDealer.save();
@@ -56,6 +51,5 @@ public class Wiseman2 extends WisemanModel {
     public String load() throws IOException {
         return dreamDealer.load();
     }
-
 
 }

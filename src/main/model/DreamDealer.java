@@ -1,7 +1,5 @@
 package model;
 
-import interactionexception.EmptyDream;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -18,39 +16,28 @@ class DreamDealer {
         this.wiseman2 = wiseman2;
     }
 
-    //MODIFIES: this
-    //EFFECTS: add dream to the list, throw exception if it is an empty string
     void addDream(String s)  {
-//        if (s.equals("")) {
-//            throw new EmptyDream();
-//        }
         dream.add(s);
     }
 
-
     //EFFECTS: return the result
     String printDream() {
-        return wiseman2.printResult(dream);
+        return wiseman2.getResult(dream);
     }
-//    public String printDream() {
-//        String yourdream = "";
-//        for (String s : dream) {
-//            yourdream = yourdream + s + "\n";
-//        }
-//        return yourdream;
-//    }
 
     ArrayList<String> getDream() {
         return dream;
     }
 
+    ArrayList setDream(ArrayList<String> dream) {
+        this.dream = dream;
+        return dream;
+    }
 
     //MODIFIES: txt
     //EFFECTS: save dream to another file
     void save() throws IOException {
-
         // PrintWriter writer = new PrintWriter("./outputfile.txt", "UTF-8");
-
         List<String> lines = Files.readAllLines(Paths.get("data/outputfile.txt"));
 
         PrintWriter writer = new PrintWriter("data/outputfile.txt", "UTF-8");
@@ -58,15 +45,11 @@ class DreamDealer {
         for (String line: lines) {
             writer.println(line);
         }
-
         System.out.println("wiseman keeps (save) the dream for you.");
-
         for (String eachDream : getDream()) {
             writer.println(eachDream);
         }
         writer.close();
-
-
     }
 
     //MODIFIES: lines
@@ -76,14 +59,10 @@ class DreamDealer {
 
         String result = "";
         for (String line: lines) {
+            System.out.println(line);
             result += line;  //result +
         }
         return result;
-    }
-
-    ArrayList setDream(ArrayList<String> dream) {
-        this.dream = dream;
-        return dream;
     }
 }
 
