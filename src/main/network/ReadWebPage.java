@@ -70,7 +70,7 @@ public class ReadWebPage {
         } catch (JSONException je) {
             System.out.println("Exception been caught");
         }
-
+        System.out.println(predict);
         return predict;
     }
 }

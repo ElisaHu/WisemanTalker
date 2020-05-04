@@ -6,8 +6,8 @@ import network.ReadWebPage;
 import java.io.IOException;
 
 public class Wiseman3 extends WisemanModel {
-    protected int age;
-    protected String status;
+//    protected int age;
+//    protected String status;
 
     public Wiseman3(int age, String status)  {
         this.age = age;
@@ -17,9 +17,13 @@ public class Wiseman3 extends WisemanModel {
     //EFFECTS: print the information of wiseman 3
     @Override
     public String wisemanInfo() {
-        return "This is weather wiseman" + "\n" + super.wisemanInfo() + "\n"
+        System.out.println("This is weather wiseman" + "\n"
+                + super.wisemanInfo()
                 + "Give me the city and the country, I can predict the weather!" + "\n"
-                + "For instance: London,uk | Vancouver,ca" + "\n";
+                + "For instance: London,uk | Vancouver,ca");
+        return "This is weather wiseman" + "\n"
+                + "Give me the city and the country, I can predict the weather!" + "\n"
+                + "For instance: London,uk | Vancouver,ca";
     }
 
     //MODIFIES: this

@@ -1,7 +1,6 @@
 package model;
 
 import observer.Subject;
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class WisemanModel extends Subject {
