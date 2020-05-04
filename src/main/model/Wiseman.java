@@ -3,7 +3,6 @@ package model;
 import interactionException.EmptyMotto;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Wiseman extends WisemanModel {
 
